@@ -1,12 +1,11 @@
 from contracts.extract import extractor
-
 import requests
 import os
 
 
 class ExtractorWeather(extractor):
     @classmethod
-    def extract(cls):  # corregí nombre y convención 'cls' en vez de 'Self'
+    def extract(cls):  
         try:
             API_KEY = os.getenv("OPENWEATHERMAP_API_KEY")
             ciudad = os.getenv("CITY_DATA")
@@ -14,12 +13,12 @@ class ExtractorWeather(extractor):
             params = {
                 "q": ciudad,
                 "appid": API_KEY,
-                "units": "metric",  # grados Celsius
-                "lang": "es",  # idioma español
+                "units": "metric",  
+                "lang": "es", 
             }
             response = requests.get(url, params=params)
 
-            response.raise_for_status()  # esto lanza excepción si hay error HTTP
+            response.raise_for_status() 
 
             data = response.json()
             return data

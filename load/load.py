@@ -14,7 +14,7 @@ class loaderS3(loader):
                 aws_session_token=os.getenv("AWS_SESSION_TOKEN"),
                 region_name=os.getenv("AWS_DEFAULT_REGION"),
             )
-            bucket_name = os.getenv("AWS_WEATHER_SONG_NAME")
+            bucket_name = os.getenv("AWS_WEATHER_BUCKET_NAME")
             s3.upload_file(file_path, bucket_name, s3_key)
             print(f"✅ Subido: {file_path} → s3://{bucket_name}/{s3_key}")
         except Exception as e:
